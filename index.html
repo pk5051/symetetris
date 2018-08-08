@@ -1,0 +1,96 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SYME-TETRIS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+<div id="smallScreen">
+    <p>This device has too small screen.</p>
+    <p>Please open this game on tablet or PC.</p>
+</div>
+<div class="sidenav">
+
+</div>
+
+<div class="content">
+    <!-- HTML -->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<p><div id="displayScore"></div>
+
+<div id="mianContainer">
+
+
+</div>
+
+<div id="toHide">
+
+    <div class="sidenav">
+            <!--////-->
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; info.</span>
+            <br><br><br>
+        
+            <img id="changePic" src="0.png" alt="0" border="2.5" >
+            <!--INFO-->
+            <!--INFO-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <h1 style="color: #fff6cf">use arrows and z, x keys, to control. </h1>
+                    <br>
+                    <h1 style="color: #fff6cf">press <span>ENTER</span> to refresh the game. </h1>
+                </div>
+            </div>
+            <!--///////////////////-->
+            <!--GAME OVER-->
+            <div id="myNavGame" class="overlay">
+                <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNavGame()">&times;</a>-->
+                <div class="overlay-content">
+                    <!--<a href="#">GAME OVER!</a>-->
+                    <h1 style="color: #fff6cf">GAME OVER!</h1>
+                    <h1 style="color: #fff6cf">Your score: </h1>
+                    <h1 style="color: lightcoral" id="wynikFull">0</h1>
+                    <br><br>
+                    <h2 style="color: #fff6cf">press enter.</h2>
+                </div>
+            </div>
+            <div id="analog"></div></p>
+        
+    </div>
+        
+</div>
+
+<div class="content">
+    <div id='macierz'></div>
+    <!--<p>~use arrows and z, x keys, to control. <span>||</span> press <span>ENTER</span> to refresh the game. </p>-->
+    <!--<p>press <span>ENTER</span> to refresh the game.</p>-->
+    <!--<p>press <span>esc</span>to end. </p>-->
+</div>
+
+
+</div>
+
+<!--<section id="footer">-->
+    <!--<div class="footLeft">-->
+
+        <!--<div class="circle" id="zBtn"><p>Z</p></div>-->
+        <!--<div class="circle" id="xBtn"><p>X</p></div>-->
+        <!--<div class="circle" id="upBtn"><p>&#8593;</p></div>-->
+
+    <!--</div>-->
+    <!--<div class="footRight">-->
+        <!--<div class="circle" id="leftBtn"><p>&#8592;</p></div>-->
+        <!--<div class="circle" id="downBtn"><p>&#8595;</p></div>-->
+        <!--<div class="circle" id="rightBtn"><p>&#8594;</p></div>-->
+    <!--</div>-->
+
+<!--</section>-->
+
+    <script src="js.js"></script>
+</body>
+</html>

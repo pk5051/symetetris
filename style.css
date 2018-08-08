@@ -1,0 +1,233 @@
+
+
+
+@media screen and (min-height: 300px) {
+    body {
+        /*border: 1px solid #cf9a35;*/
+        /* transform: scale(0.6); */
+        /* transform: unset; */
+        transform: scale(0.85);
+        overflow: hidden;
+        /* border: 1px solid rgba(226, 226, 221, 0.945); */
+    }
+}
+
+
+
+#smallScreen{
+    display: none;
+}
+
+.sidenav {
+height: 100%;
+/*width: 230px;*/
+    min-width: 330px;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+/* background-color: #111; */
+overflow-x: hidden;
+    /*margin-right: 30px;*/
+}
+
+
+.content {
+ /*margin-right: 35%;*/
+ /*padding-left: 40px;*/
+/*margin: auto;*/
+    padding-left: 55px;
+}
+
+
+.empty {
+    /*filter: blur(4px);*/
+    filter: none;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    /*outline: 1.2px solid grey;*/
+    /*----=====*/
+    box-shadow: 2.5px 2.5px rgba(0,0,0,0.1);
+
+}
+.blockOn {
+    width: 50px;
+    height: 50px;
+    background-color: #cf9a35;
+    /*background-color: #cf7ea4;*/
+    /*background-color: #35adcf;*/
+    /*background-color: #659e92;*/
+    /*background-color: #9e967d;*/
+    /*background-color: #ddd5b5;*/
+    /*background-color: #dd4d46;*/
+
+
+    outline: 2px solid #292929;
+    display: inline-block;
+    border-radius: 2.5px;
+    box-shadow: 1.5px 1.5px rgba(0,0,0,0.4);
+    outline-offset: -1.9px;
+    outline-color: #595959;
+
+}
+#macierz {
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    /*background-color: #777;*/
+    background-color: #5d6c77;
+
+    width: 401px;
+    height: 748px;
+    border-radius: 5px;
+    outline: 2px solid black;
+    border:2px solid green;
+    outline-color: #d8cfea;
+    outline-style:solid;
+    /*background-image: url("tlo002.jpg");*/
+    /*filter: blur(4px);*/
+    margin-bottom: -8%;
+
+
+}
+#displayScore {
+    margin: auto;
+    width: 50%;
+    padding: 1px;
+    text-align: center;
+    color: #d8cfea;
+    font-family: "Apple SD Gothic Neo";
+
+}
+
+body {
+    /*filter: blur(1px);*/
+    background-image: linear-gradient(to bottom, #5481c6, #626caf,
+    #685895, #69447b, #653260);
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+p {
+    text-align: center;
+    color: #e2dabb;
+    font-family: "Apple SD Gothic Neo";
+
+}
+span {
+    /*color: coral;*/
+    color: lightcoral;
+}
+/*FULL SCREN*/
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    /*background-color: rgb(0,0,0);*/
+    /*background-color: rgba(0,0,0, 0.9);*/
+    background-image: linear-gradient(to bottom, #5481c6, #626caf,
+    #685895, #69447b, #52294d);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    /*color: #818181;*/
+    color: #fff6cf;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    /*color: #f1f1f1;*/
+    color: lightcoral;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay a {
+        font-size: 20px
+    }
+
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+
+}
+
+
+#changePic{
+    /*display: none;*/
+    border: 2px solid white;
+    width: 200px;
+    height: 200px;
+}
+
+#footer{
+    margin-bottom: 2.5%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    /*background-color: orange;*/
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.circle{
+    font-size: 20px;
+    float: left;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    border-radius: 20%;
+    background-color: #47203c;
+    color: #52294d;
+    /*vertical-align: bottom;*/
+    margin-right: 10px;
+    text-align: center;
+}
+.footLeft{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.footRight{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

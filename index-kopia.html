@@ -1,0 +1,624 @@
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<!-- CSS-->
+<style>
+
+
+    @media screen and (min-height: 300px) {
+        body {
+            /*border: 1px solid #cf9a35;*/
+            /* transform: scale(0.6); */
+            /* transform: unset; */
+            transform: scale(0.8);
+            overflow: hidden;
+            /* border: 1px solid rgba(226, 226, 221, 0.945); */
+        }
+    }
+
+/* Style the side navigation */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    /* background-color: #111; */
+    overflow-x: hidden;
+}
+
+
+
+/* Style the content */
+.content {
+    /* margin-left: 200px; */
+    /* padding-left: 20px; */
+    margin: auto;
+}
+
+
+    .empty {
+        /*filter: blur(4px);*/
+        filter: none;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        /*outline: 1.2px solid grey;*/
+        /*----=====*/
+        box-shadow: 2.5px 2.5px rgba(0,0,0,0.1);
+
+    }
+    .blockOn {
+        width: 50px;
+        height: 50px;
+        background-color: #cf9a35;
+        /*background-color: #cf7ea4;*/
+        /*background-color: #35adcf;*/
+        /*background-color: #659e92;*/
+        /*background-color: #9e967d;*/
+        /*background-color: #ddd5b5;*/
+        /*background-color: #dd4d46;*/
+
+
+        outline: 2px solid #292929;
+        display: inline-block;
+        border-radius: 2.5px;
+        box-shadow: 1.5px 1.5px rgba(0,0,0,0.4);
+        outline-offset: -1.9px;
+        outline-color: #595959;
+
+    }
+    #macierz {
+        margin-left: auto;
+        margin-right: auto;
+        background-repeat: no-repeat;
+        /*background-color: #777;*/
+        background-color: #5d6c77;
+
+        width: 401px;
+        height: 748px;
+        border-radius: 5px;
+        outline: 2px solid black;
+        border:2px solid green;
+        outline-color: #d8cfea;
+        outline-style:solid;
+        /*background-image: url("tlo002.jpg");*/
+        /*filter: blur(4px);*/
+
+
+    }
+    #displayScore {
+        margin: auto;
+        width: 50%;
+        padding: 1px;
+        text-align: center;
+        color: #d8cfea;
+        font-family: "Apple SD Gothic Neo";
+
+    }
+
+    body {
+        /*filter: blur(1px);*/
+        background-image: linear-gradient(to bottom, #5481c6, #626caf,
+        #685895, #69447b, #653260);
+        font-family: 'Lato', sans-serif;
+        box-sizing: border-box;
+    }
+    p {
+        text-align: center;
+        color: #e2dabb;
+        font-family: "Apple SD Gothic Neo";
+
+    }
+    span {
+        /*color: coral;*/
+        color: lightcoral;
+    }
+    /*FULL SCREN*/
+    .overlay {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        /*background-color: rgb(0,0,0);*/
+        /*background-color: rgba(0,0,0, 0.9);*/
+        background-image: linear-gradient(to bottom, #5481c6, #626caf,
+        #685895, #69447b, #52294d);
+        overflow-x: hidden;
+        transition: 0.5s;
+    }
+
+    .overlay-content {
+        position: relative;
+        top: 25%;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .overlay a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        /*color: #818181;*/
+        color: #fff6cf;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .overlay a:hover, .overlay a:focus {
+        /*color: #f1f1f1;*/
+        color: lightcoral;
+    }
+
+    .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px;
+    }
+
+    @media screen and (max-height: 450px) {
+        .overlay a {font-size: 20px}
+        .overlay .closebtn {
+            font-size: 40px;
+            top: 15px;
+            right: 35px;
+        }
+    /*FULL SCREN-end*/
+    /* Style the side navigation */
+    
+</style>
+
+<div class="sidenav">
+
+</div>
+
+<div class="content">
+    <!-- HTML -->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<p><div id="displayScore"></div>
+
+<div id="mianContainer">
+    
+
+</div>
+<div class="sidenav">
+    <!--////-->
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; info.</span>
+
+    <!--INFO-->
+    <!--INFO-->
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <h1 style="color: #fff6cf">use arrows and z, x keys, to control. </h1>
+            <br>
+            <h1 style="color: #fff6cf">press <span>ENTER</span> to refresh the game. </h1>
+        </div>
+    </div>
+    <!--///////////////////-->
+    <!--GAME OVER-->
+    <div id="myNavGame" class="overlay">
+        <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNavGame()">&times;</a>-->
+        <div class="overlay-content">
+            <!--<a href="#">GAME OVER!</a>-->
+            <h1 style="color: #fff6cf">GAME OVER!</h1>
+            <h1 style="color: #fff6cf">Your score: </h1>
+            <h1 style="color: lightcoral" id="wynikFull">0</h1>
+            <br><br>
+            <h2 style="color: #fff6cf">press enter.</h2>
+        </div>
+    </div>
+    <div id="analog"></div></p>
+
+</div>
+
+<div class="content">
+    <div id='macierz'></div>
+    <!--<p>~use arrows and z, x keys, to control. <span>||</span> press <span>ENTER</span> to refresh the game. </p>-->
+    <!--<p>press <span>ENTER</span> to refresh the game.</p>-->
+    <!--<p>press <span>esc</span>to end. </p>-->
+</div>
+
+
+</div>
+
+
+<!-- js-->
+<script>
+<!--FULL SCREEN NAV-->
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+<!--FULL SCREEN NAV-end-->
+<!--GAME OVER-->
+function openNavGame() {
+    document.getElementById("myNavGame").style.width = "100%";
+}
+
+function closeNavGame() {
+    document.getElementById("myNavGame").style.width = "0%";
+}
+<!--GAME OVER-end-->
+
+    let score = 1000;
+    music = () => {
+        let audio = new Audio('8bit.mp3');
+        audio.play();
+    };
+    // music();
+
+
+    randomColor = () => {
+        let arrayColor = ['#dd4d46','#ddd5b5','#9e967d','#659e92','#35adcf','#cf7ea4',
+            '#cf9a35'];
+        let temp = Math.floor(Math.random() * arrayColor.length) + 1;
+        let chosenColor = arrayColor[temp];
+        console.log(chosenColor);
+        // background-color: #dd4d46;
+        // return chosenColor;
+        $('.blockOn').css('background-color', chosenColor);
+    };
+
+
+
+
+    scoreCalc = () => {
+        let updateScore = $('#displayScore');
+        updateScore.css('font-size', '20px');
+        let updateScoreTwo = $('#wynikFull');
+        updateScore.text(score);
+
+        updateScore.css('font-family', 'Apple SD Gothic Neo');
+    };
+    scoreCalc();
+    // $('#macierz').hide();
+
+    // console.log(myArrayOfArrays[1][1]);
+
+    let macierz = [
+        [0,0,0,1,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+    ];
+    // console.log(macierz[0][3]);
+    /////////////////////////////
+
+
+
+    /////////////////////////////
+    randomCube = () => {
+        // let randomTetromino=Math.floor((Math.random() * 4) + 1);
+
+
+        if (zIn==0){
+            // i
+            macierz[0]= [0,0,0,1,0,0,0,0];
+            // macierz[1]= [0,0,0,1,0,0,0,0];
+            // macierz[2]= [0,0,0,1,0,0,0,0];
+            // macierz[3]= [0,0,0,1,0,0,0,0];
+            return;
+        }else if (zIn==1){
+            // O
+            macierz[0]= [0,0,0,1,1,1,0,0];
+            macierz[1]= [0,0,0,1,0,1,0,0];
+            macierz[2]= [0,0,0,1,1,1,0,0];
+            // macierz[3]= [0,0,0,0,0,0,0,0];
+            return;
+        }else if (zIn==2){
+            // +
+            macierz[0]= [0,0,0,0,1,0,0,0];
+            macierz[1]= [0,0,0,1,1,1,0,0];
+            macierz[2]= [0,0,0,0,1,0,0,0];
+        }else if(zIn==3){
+            // X
+            macierz[0]= [0,0,0,1,0,1,0,0];
+            macierz[1]= [0,0,0,0,1,0,0,0];
+            macierz[2]= [0,0,0,1,0,1,0,0];
+            // macierz[3]= [0,0,0,0,0,0,0,0];
+        }
+
+    };
+    /////////////////////////////
+    let scoreTwo=0;
+    check = () => {
+        for(var y=macierz.length-1; y>=0; y--) {
+            isLineFull = true;
+            for(var x=0; x<macierz[y].length; x++) {
+                if(macierz[y][x] < 10) {
+                    isLineFull = false;
+                }
+            }
+            if (isLineFull) {
+                randomColor();
+
+                macierz.splice(y, 1);
+                macierz.splice(0, 0, [0,0,0,0,0,0,0,0]);
+                y++;
+                scoreTwo=(scoreTwo+1)*10;
+                $('#wynikFull').text(scoreTwo);
+                // randomCube();
+                moveDown();
+                rysuj();
+            }
+        }
+    };
+    /////////////////////////////
+
+
+    /*RYSUJ*/
+    rysuj = () => {
+
+        document.getElementById('macierz').innerHTML = "";
+        for (let y = 0; y < macierz.length; y++) {
+            for (let x=0; x<macierz[y].length ;x++) {
+                if (macierz[y][x] ===0 ) {
+                    document.getElementById('macierz').innerHTML += "<div class='empty'></div>";
+                }else if (macierz[y][x]=== 1 || macierz[y][x]=== 11){
+                    document.getElementById('macierz').innerHTML += "<div class='blockOn'></div>";
+                }
+            }
+            //koniec linijki
+            document.getElementById('macierz').innerHTML += "<br>";
+
+        };
+
+    };
+    /*RYSUJ-end*/
+    ////////////////
+    moveDown = () => {
+        let possibilityMove = true;
+
+
+        for (let y = 0; y < macierz.length; y++) {
+            for (let x=0; x<macierz[y].length ;x++) {
+                if (macierz[y][x] > 0 && macierz[y][x] < 10 )  {
+                    if(y === macierz.length-1 || macierz[y+1][x] > 10) {
+                        possibilityMove = false;
+                        zablokuj();
+                    }
+                }
+            }
+        }
+        if(possibilityMove){
+            for(let y=macierz.length-1;y>=0;y--) {
+                for (let x = 0; x < macierz[y].length; x++){
+                    if(macierz[y][x] > 0 && macierz[y][x] < 10){
+                        macierz[y+1][x] = macierz[y][x];
+                        macierz[y][x] = 0;
+                    }
+                }
+                // rysuj();
+            }
+            rysuj();
+        }
+        check();
+    };
+    ////////////////////
+    /*--LEFT--*/
+    leftMove = () => {
+        var possibilityMove = true;
+
+        for (let y = 0; y < macierz.length; y++) {
+            for (let x=0; x<macierz[y].length ;x++) {
+                if (macierz[y][x] > 0 && macierz[y][x] < 10 )  {
+                    if(x === 0 || macierz[y][x] > 10) {
+                        possibilityMove = false;
+                    }
+                }
+            }
+        }
+        if(possibilityMove){
+            for(let y=macierz.length-1;y>=0;y--) {
+                for (let x = 0; x < macierz[y].length; x++){
+                    if(macierz[y][x] > 0 && macierz[y][x] < 10){
+                        macierz[y][x-1] = macierz[y][x];
+                        macierz[y][x] = 0;
+                    }
+                }
+            }
+        }
+    };
+    ////////////////////
+    /*--RGHT--*/
+    rightMove = () => {
+        possibilityMove = true;
+
+        for (let y = macierz.length-1; y >= 0; y--) {
+            for (let x=0; x<macierz[y].length ;x++) {
+                if (macierz[y][x] > 0 && macierz[y][x] < 10 )  {
+                    if(x === 7 || macierz[y][x+1] > 10) {
+                        possibilityMove = false;
+                    }
+                }
+            }
+        }
+        if(possibilityMove){
+            for(let y=macierz.length-1;y>=0;y--) {
+                for (let x = macierz[y].length; x >= 0; x--){
+                    if(macierz[y][x] > 0 && macierz[y][x] < 10){
+                        macierz[y][x+1] = macierz[y][x];
+                        macierz[y][x] = 0;
+                    }
+                }
+            }
+        }
+    };
+    /*--RGHTend--*/
+    ////////////////////
+    /*--INKREMENT--*/
+    let zIn = 0;
+    // let xIn = 0;
+    inkremento = () => {
+        zIn+=1;
+        if (zIn>3){
+            zIn =0;
+        }
+        $('#analog').text(zIn);
+        // alert(zIn);
+    console.log(zIn);
+    };
+    decremento = () => {
+        zIn-=1;
+        if (zIn<0){
+            zIn=3;
+        }
+    $('#analog').text(zIn);
+
+        // alert(zIn);
+    console.log(zIn);
+    };
+    /*--INKREMENT-end--*/
+    ////////////////////
+    /*--EVENTY--*/
+    document.onkeydown = function(e) {
+        if (e.keyCode === 37){
+            leftMove();
+        } else if (e.keyCode === 39){
+            rightMove();
+        } else if (e.keyCode === 40){
+            score=score+100;
+            scoreCalc();
+            moveDown();
+        }else if (e.keyCode == 13){
+            location.reload();
+        }else if (e.keyCode == 38){
+            // 32 -spacja?
+            // SLOWMO
+            slowMo();
+
+        }else if (e.keyCode == 27){
+            // alert("GAME OVER\nYOUR SCORE: "+ scoreTwo);
+            // openNav();
+            openNavGame();
+        }else if (e.keyCode == 90){
+            // Z - DEKREMENTUJ
+            decremento();
+
+        }else if (e.keyCode == 88){
+            // X - INKREMENTUJ
+            inkremento();
+        }
+    }
+
+    /*--EVENTY-reset-*/
+
+    //SLOWMO RESET
+    $(document).keyup(function (e) {
+        if (e.keyCode == 38){
+            fastMo();
+        }
+    });
+
+
+
+
+
+    /*--EVENTY-end--*/
+    ////////////////////
+    zablokuj = () =>{
+        for (let y = 0; y < macierz.length; y++) {
+            for (let x=0; x<macierz[y].length ;x++) {
+                if(macierz[y][x] > 0 && macierz[y][x] < 10){
+                    macierz[y][x]=macierz[y][x]+10;
+                }
+            }
+        }
+
+
+        randomCube();
+        check();
+
+    };
+
+
+
+    /*BULLET TIME*/
+    let time = 250;
+
+
+    slowMo = () => {
+        time= 1000;
+
+        // filter: blur(4px);
+        $('.empty').css('filter', 'blur(2px)');
+        $('.blockOn').css('filter', 'contrast(200%)');
+        $('.blockOn').css('filter', 'contrast(200%)');
+        $('#displayScore').css('filter', 'contrast(200%)');
+        $('#displayScore').css('color', 'red');
+        $('#displayScore').css('filter', 'brightness(200%');
+
+
+    };
+
+
+    fastMo = () => {
+        time=250;
+        score=score-500;
+        scoreCalc();
+        $('.empty').css('filter', 'none');
+        $('.blockOn').css('filter', 'none');
+        $('.blockOn').css('filter', 'none');
+        $('#displayScore').css('filter', 'none');
+        $('#displayScore').css('color', '#d8cfea');
+        $('#displayScore').css('filter', 'none');
+
+    };
+
+
+    sharpnessMoveDown = () => {
+        $('#displayScore').css('color', 'orange');
+        score=score+50;
+        scoreCalc();
+    };
+
+    /*BULLET TIME-end*/
+    /*AUDIO*/
+
+
+    /*AUDIO-end*/
+
+    /*GAME OVER*/
+    gameOver = () => {
+      if (score < 0){
+          // alert("GAME OVER\nYOUR SCORE: "+ scoreTwo);
+          $('#wynikFull').text(scoreTwo);
+            $('#wynikFull').css('color','lightcoral');
+            openNavGame();
+      }
+
+    };
+    /*GAME OVER-end*/
+
+    function mainCycle() {
+        // console.log('CYKL działa');
+
+        moveDown();
+        rysuj();
+        gameOver();
+        setTimeout(mainCycle,time);
+    };
+    rysuj();
+    mainCycle();
+
+    /////////////
+
+</script>
